@@ -21,6 +21,17 @@ export const POLYGON_NETWORK_CONFIG = {
   rpcUrls: ["https://rpc-mumbai.maticvigil.com/"],
   blockExplorerUrls: ["https://mumbai.polygonscan.com/"],
 };
+export const ICON_NETWORK_CONFIG = {
+  chainId: "0x229",
+  chainName: "Arctic",
+  nativeCurrency: {
+    name: "ICX",
+    symbol: "ICX",
+    decimals: 18,
+  },
+  rpcUrls: ["https://arctic-rpc.icenetwork.io:9933"],
+  blockExplorerUrls: ["https://arctic.epirus.io"],
+};
 export const PUSH =
   "663f25c970ed54389f0d1c55105eb952244ce90332b3d1049459a6c2e3ce574a";
 export const CHALLENGE_AMOUNT = 1000000;
@@ -28,4 +39,4 @@ export const STAKE_DURATION = 30;
 export const FLOW_RATE = 10;
 export const HOST = "localhost:3002"
 export const PIPELINE_ADDRESS = "0x3A7Ee68e244d7789754050cC9f75880324B827b7";
-export const CONTRACT_ADDRESS = "0x60B19871c5DbF423240BE920EcB4BA68010059D4"
+export const CONTRACT_ADDRESS = "0x3E972458B2D855e36992D9971c0d62B7d2127c2E"
