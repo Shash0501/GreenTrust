@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from "react";
 import { useAuth } from '@/auth/useAuth';
+import Image from 'next/image';
 
 import { CircularProgress } from "@mui/material";
 import Snackbar from '@mui/material/Snackbar';
@@ -33,10 +34,14 @@ export function ArcanaAuth() {
       {auth.loading
         ? <Skeleton variant="circular" width={44} height={44} />
         : <Modal
-          anchor={<div className="w-[44px] h-[44px] bg-primary rounded-full shadow-sm hover:scale-105 flex items-center justify-center"><FontAwesomeIcon
-            icon={faUser}
-            className="text-white"
-          /></div>}
+          anchor={
+            <div className="w-[44px] h-[44px] bg-primary rounded-full shadow-sm hover:scale-105 flex items-center justify-center overflow-clip">
+              {!auth.user.picture ? <FontAwesomeIcon
+                icon={faUser}
+                className="text-white"
+              /> : <Image src={auth.user.picture} height={0} width={0} className="w-full h-full" />}
+            </div>
+          }
           popover={<AccountCard auth={auth} />}
         />
       }

@@ -4,6 +4,8 @@ import Button from "./Button";
 
 
 export default function AccountCard({ auth }) {
+    console.log('auth debug:', auth);
+
     return (<div className="p-5 rounded-lg">
         <div className="mb-4">
           <p className="text-darkGray text-base font-bold">{auth?.user.name}</p>
