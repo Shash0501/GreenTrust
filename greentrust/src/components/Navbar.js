@@ -53,6 +53,7 @@ export default function Navbar() {
       </nav>
       <nav>
         <section className="fixed bottom-0 flex flex-row sm:hidden justify-around w-full bg-white py-3 px-12 shadow-inner rounded-t-xl">
+          <ArcanaAuth />
           <NavbarLink link="/dashboard" icon={faHouse} tooltip="Home" />
           <NavbarLink link="/farms" icon={faTractor} tooltip="Farms" />
           {(loaded && !isRegistered) && <NavbarLink link="/profile/role-choice" icon={faIdCard} tooltip="Register" />}
