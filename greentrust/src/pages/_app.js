@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Script from "next/script";
+
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "react-multi-carousel/lib/styles.css";
@@ -9,67 +12,29 @@ import Head from "next/head";
 import { getAuth } from "@/auth/getArcanaAuth";
 import { ProvideAuth } from "@/auth/useAuth";
 
-import { useEffect } from "react";
 
 config.autoAddCss = false;
 const authProvider = getAuth();
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const {events} = useRouter();
-  const googleTranslateElementInit = () => {
-    new window.google.translate.TranslateElement(
-      { pageLanguage: "en" },
-      "google_translate_element"
-    );
-  };
 
-  useEffect(() => {
-    const id = "google-translate-script";
-
-    const addScript = () => {
-      const s = document.createElement("script");
-      s.setAttribute(
-        "src",
-        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-      );
-      s.setAttribute("id", id);
-      const q = document.getElementById(id);
-      if (!q) {
-        document.body.appendChild(s);
-        window.googleTranslateElementInit = googleTranslateElementInit;
-      }
-    };
-
-    const removeScript = () => {
-      const q = document.getElementById(id);
-      if (q) q.remove();
-      const w = document.getElementById("google_translate_element");
-      if (w) w.innerHTML = "";
-    };
-
-    addScript();
-
-    events.on("routeChangeStart", removeScript);
-    events.on("routeChangeComplete", addScript);
-
-    return () => {
-      events.off("routeChangeStart", removeScript);
-      events.off("routeChangeComplete", addScript);
-    };
-  }, []);
   return (
     <>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJ52NYET3N"></script>
-      <script>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-GJ52NYET3N"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
+          function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'G-GJ52NYET3N');
         `}
-      </script>
+      </Script>
+
       <Head>
         <title>Green Trust</title>
       </Head>
