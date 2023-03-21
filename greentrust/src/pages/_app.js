@@ -60,6 +60,16 @@ export default function App({ Component, pageProps }) {
   }, []);
   return (
     <>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJ52NYET3N"></script>
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-GJ52NYET3N');
+        `}
+      </script>
       <Head>
         <title>Green Trust</title>
       </Head>
