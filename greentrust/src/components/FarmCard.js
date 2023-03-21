@@ -28,7 +28,7 @@ const FarmCard = ({ farm }) => {
         </div>
         <div className="flex flex-col justify-center items-center h-[30%]">
           <div className="w-full" title={farm.name}>
-            <p className="font-darkGray text-lg font-bold whitespace-nowrap text-ellipsis overflow-hidden text-center">
+            <p className="font-darkGray text-base sm:text-lg font-bold whitespace-nowrap text-ellipsis overflow-hidden text-center">
               {truncate(farm.name, 16)}
             </p>
           </div>

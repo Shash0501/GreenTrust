@@ -9,7 +9,7 @@ export default function Info({ icon, text, style, iconDivStyle, textStyle }) {
                     className={`w-[20px] h-[20px] ${style}`}
                 />
             </div>
-            <p className={`text-darkGray text-base ${textStyle}`}>
+            <p className={`text-darkGray text-sm sm:text-base ${textStyle}`}>
                 {text}
             </p>
         </div>
