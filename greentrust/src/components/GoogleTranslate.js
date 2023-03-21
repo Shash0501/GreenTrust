@@ -1,20 +1,51 @@
 import React from "react";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 
 const GoogleTranslate = () => {
+  const { events } = useRouter();
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      { pageLanguage: "en" },
+      "google_translate_element"
+    );
+  };
+
   useEffect(() => {
-    var elem = document.getElementById('google_translate_element');
-    console.log('elem', elem)
-    console.log(elem.querySelector('span'));
-    // style.display = 'none'
-    var poweredByDiv = document.getElementsByClassName('skiptranslate goog-te-gadget')
+    const id = "google-translate-script";
+
+    const addScript = () => {
+      const s = document.createElement("script");
+      s.setAttribute(
+        "src",
+        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+      );
+      s.setAttribute("id", id);
+      const q = document.getElementById(id);
+      if (!q) {
+        document.body.appendChild(s);
+        window.googleTranslateElementInit = googleTranslateElementInit;
+      }
+    };
+
+    const removeScript = () => {
+      const q = document.getElementById(id);
+      if (q) q.remove();
+      const w = document.getElementById("google_translate_element");
+      if (w) w.innerHTML = "";
+    };
+
+    addScript();
+  }, []);
+
+  useEffect(() => {
+    const elem = document.getElementById('google_translate_element');
+    const poweredByDiv = document.getElementsByClassName('skiptranslate goog-te-gadget')
     poweredByDiv.innerText = '';
-    console.log('happening')
-  }, [])
-
-
-  return;
+  }, []);
+  
+  return <div id="google_translate_element" />;
 };
 
 export default GoogleTranslate;
