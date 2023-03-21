@@ -71,7 +71,7 @@ body > button[style] > button[style] {
   }
 
   select {
-    @apply border-none outline-none;
+    @apply border-none outline-none !bg-white;
   }
 }
 

@@ -13,7 +13,7 @@ const FarmCard = ({ farm }) => {
 
   return (
     <Link href={`/farm/${farm.id}`} >
-      <div className="w-full !max-w-[280px] bg-white rounded-xl shadow-lg overflow-clip hover:scale-[101%] aspect-[350/409] mr-8">
+      <div className="w-full !max-w-[280px] bg-white rounded-xl shadow-lg overflow-clip hover:scale-[101%] aspect-[350/409]">
         <div className="h-[70%]">
           <Image
             className={`object-cover !h-full !w-full ${!imageLoaded ? "hidden" : ""}`}
